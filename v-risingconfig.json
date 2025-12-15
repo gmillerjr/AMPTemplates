@@ -73,7 +73,7 @@
         "DisplayName": "Siege Weapon Health",
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Gameplay:joystick:1",
-        "Description": "Setting for Siege Golem Health",
+        "Description": "Setting for Siege Golem Health. Settings above Very High require v1.1 or higher",
         "Keywords": "siege, weapon, health",
         "FieldName": "SiegeWeaponHealth",
         "InputType": "enum",
@@ -86,7 +86,11 @@
             "Low": "Low",
             "Normal": "Normal",
             "High": "High",
-            "VeryHigh": "Very High"
+            "VeryHigh": "Very High",
+            "MegaHigh": "Mega High",
+            "UltraHigh": "Ultra High",
+            "CrazyHigh": "Crazy High",
+            "Max": "Maximum"
         }
     },
     {
@@ -400,7 +404,7 @@
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Gameplay:joystick:1",
         "Description": "Multiplies all droptables with this factor granting more or less drops from kills and chests (Min: 0.25, Max: 3.0)",
-        "Keywords": "drop, table, modifier",
+        "Keywords": "drop, table, modifier, general",
         "FieldName": "DropTableModifier_General",
         "InputType": "number",
         "IsFlagArgument": false,
@@ -416,7 +420,7 @@
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Gameplay:joystick:1",
         "Description": "Multiplies the amount of loot received from successful servant hunts (Min: 0.25, Max: 3.0)",
-        "Keywords": "drop, table, modifier",
+        "Keywords": "drop, table, modifier, missions",
         "FieldName": "DropTableModifier_Missions",
         "InputType": "number",
         "IsFlagArgument": false,
@@ -424,6 +428,38 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 1,
         "MinValue": 0.25,
+        "MaxValue": 3,
+        "Suffix": "multiplier"
+    },
+    {
+        "DisplayName": "Drop Table Modifier - Stygian Shards",
+        "Category": "V Rising:stadia_controller",
+        "Subcategory": "Gameplay:joystick:1",
+        "Description": "Multiplies the number of Stygian shards dropped in Rift Incursions (Min: 0.25, Max: 3.0). Requires v1.1 or higher",
+        "Keywords": "drop, table, modifier, stygian, shards",
+        "FieldName": "DropTableModifier_StygianShards",
+        "InputType": "number",
+        "IsFlagArgument": false,
+        "ParamFieldName": "DropTableModifier_StygianShards",
+        "IncludeInCommandLine": false,
+        "DefaultValue": 1,
+        "MinValue": 0.25,
+        "MaxValue": 3,
+        "Suffix": "multiplier"
+    },
+    {
+        "DisplayName": "Soul Shard Durability Drop Rate",
+        "Category": "V Rising:stadia_controller",
+        "Subcategory": "Gameplay:joystick:1",
+        "Description": "The durability loss rate for Soul Shards (Min: 0, Max: 3.0). Requires v1.1 or higher",
+        "Keywords": "soul, shard, durability, drop, rate",
+        "FieldName": "SoulShard_DurabilityLossRate",
+        "InputType": "number",
+        "IsFlagArgument": false,
+        "ParamFieldName": "SoulShard_DurabilityLossRate",
+        "IncludeInCommandLine": false,
+        "DefaultValue": 1,
+        "MinValue": 0,
         "MaxValue": 3,
         "Suffix": "multiplier"
     },
@@ -769,7 +805,7 @@
         "DisplayName": "Research Cost Modifier",
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Gameplay:joystick:1",
-        "Description": "Multiplies the cost of researching (Min: 0)",
+        "Description": "Multiplies the cost of researching (Min: 0). Not used in v1.1 or higher",
         "Keywords": "research, cost, modifier",
         "FieldName": "ResearchCostModifier",
         "InputType": "number",
@@ -1233,7 +1269,7 @@
         "DisplayName": "Equipment Movement Speed Modifier",
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Vampires:dark_mode:3",
-        "Description": "Multiplies the amount of siege power gained from equipment (Min: 0.1)",
+        "Description": "Multiplies the amount of siege power gained from equipment (Min: 0.1). Not used in v1.1 or higher",
         "Keywords": "equipment, movement, speed, modifier",
         "FieldName": "EquipmentStatModifiers_Global.MovementSpeedModifier",
         "InputType": "number",
@@ -1453,7 +1489,7 @@
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Castles:castle:5",
         "Description": "The number of throne of darkness a single player is allowed to construct",
-        "Keywords": "castle, nether, gate, limit",
+        "Keywords": "castle, throne, darkness, limit",
         "FieldName": "CastleStatModifiers_Global.ThroneOfDarknessLimit",
         "InputType": "number",
         "IsFlagArgument": false,
@@ -1461,6 +1497,23 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 1,
         "MinValue": 0
+    },
+    {
+        "DisplayName": "Castle Heart Limit Type",
+        "Category": "V Rising:stadia_controller",
+        "Subcategory": "Castles:castle:5",
+        "Description": "Defines the castle heart limit type",
+        "Keywords": "castle, heart, limit, type",
+        "FieldName": "CastleStatModifiers_Global.CastleHeartLimitType",
+        "InputType": "enum",
+        "IsFlagArgument": false,
+        "ParamFieldName": "$.CastleStatModifiers_Global.CastleHeartLimitType",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "User",
+        "EnumValues": {
+            "User": "User basis",
+            "Clan": "Clan basis"
+        }
     },
     {
         "DisplayName": "Level 1 Floor Limit",
@@ -1721,7 +1774,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 20,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1737,7 +1790,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1753,7 +1806,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 22,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1769,7 +1822,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1785,7 +1838,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 20,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1801,7 +1854,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1817,7 +1870,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 22,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1833,7 +1886,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1849,7 +1902,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 20,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1865,7 +1918,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1881,7 +1934,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 22,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1897,7 +1950,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1913,7 +1966,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 20,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1929,7 +1982,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1945,7 +1998,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 22,
         "MinValue": 0,
-        "MaxValue": 24,
+        "MaxValue": 23,
         "Suffix": "hours"
     },
     {
@@ -1961,7 +2014,7 @@
         "IncludeInCommandLine": false,
         "DefaultValue": 0,
         "MinValue": 0,
-        "MaxValue": 60,
+        "MaxValue": 59,
         "Suffix": "minutes"
     },
     {
@@ -1975,6 +2028,7 @@
         "Hidden": true,
         "IsFlagArgument": false,
         "ParamFieldName": "Logging.Console.Enabled",
+        "ExcludeFromImport": true,
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
         "EnumValues": {}
@@ -2018,6 +2072,7 @@
         "InputType": "number",
         "IsFlagArgument": false,
         "ParamFieldName": "Port",
+        "ExcludeFromImport": true,
         "IncludeInCommandLine": false,
         "DefaultValue": "",
         "EnumValues": {},
@@ -2033,6 +2088,7 @@
         "InputType": "number",
         "IsFlagArgument": false,
         "ParamFieldName": "QueryPort",
+        "ExcludeFromImport": true,
         "IncludeInCommandLine": false,
         "DefaultValue": "",
         "EnumValues": {},
@@ -2048,6 +2104,7 @@
         "InputType": "number",
         "IsFlagArgument": false,
         "ParamFieldName": "Rcon.Port",
+        "ExcludeFromImport": true,
         "IncludeInCommandLine": false,
         "DefaultValue": "",
         "EnumValues": {},
@@ -2063,6 +2120,7 @@
         "InputType": "text",
         "IsFlagArgument": false,
         "ParamFieldName": "Rcon.Enabled",
+        "ExcludeFromImport": true,
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
         "EnumValues": {},
@@ -2073,16 +2131,16 @@
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Host:dns:7",
         "Description": "Use this setting for a server without internet connectivity. The LAN Mode check box must also be checked in-game when connecting.",
-        "Keywords": "lan,mode",
-        "FieldName": "LanMode",
+        "Keywords": "lan,mode,lanMode",
+        "FieldName": "lanMode",
         "InputType": "checkbox",
-        "DefaultValue": "",
+        "DefaultValue": "false",
         "IsFlagArgument": false,
-        "ParamFieldName": "LanMode",
+        "ParamFieldName": "lanMode",
         "IncludeInCommandLine": false,
         "EnumValues": {
-            "False": "",
-            "True": "-lan"
+            "False": "false",
+            "True": "true"
         }
     },
     {
@@ -2115,10 +2173,10 @@
         "Suffix": "players"
     },
     {
-        "DisplayName": "Server FPS",
+        "DisplayName": "Target Server FPS",
         "Category": "V Rising:stadia_controller",
         "Subcategory": "Host:dns:7",
-        "Description": "Maximum Server FPS when idle",
+        "Description": "Target FPS for server.",
         "Keywords": "server, fps",
         "FieldName": "ServerFps",
         "InputType": "number",
@@ -2126,6 +2184,37 @@
         "ParamFieldName": "ServerFps",
         "DefaultValue": "30",
         "IncludeInCommandLine": false,
+        "Suffix": "FPS"
+    },
+    {
+        "DisplayName": "Lower Server FPS When Empty",
+        "Category": "V Rising:stadia_controller",
+        "Subcategory": "Host:dns:7",
+        "Description": "Run the server at a lower framerate target when no players are logged in. Requires v1.0 or higher.",
+        "Keywords": "server,fps,lower,empty,idle",
+        "FieldName": "LowerFPSWhenEmpty",
+        "InputType": "checkbox",
+        "IsFlagArgument": false,
+        "ParamFieldName": "lowerFPSWhenEmpty",
+        "IncludeInCommandLine": true,
+        "DefaultValue": "true",
+        "EnumValues": {
+            "True": "true",
+            "False": "false"
+        }
+    },
+    {
+        "DisplayName": "Target Server FPS When Empty",
+        "Category": "V Rising:stadia_controller",
+        "Subcategory": "Host:dns:7",
+        "Description": "Set the framerate target for when Lower FPS When Empty is active. Requires v1.0 or higher.",
+        "Keywords": "server,fps,lower,empty,idle,target,framerate,value",
+        "FieldName": "LowerFPSWhenEmptyValue",
+        "InputType": "number",
+        "IsFlagArgument": false,
+        "ParamFieldName": "lowerFPSWhenEmptyValue",
+        "DefaultValue": "15",
+        "IncludeInCommandLine": true,
         "Suffix": "FPS"
     },
     {
@@ -2164,6 +2253,7 @@
         "InputType": "hidden",
         "IsFlagArgument": false,
         "ParamFieldName": "Rcon.Password",
+        "ExcludeFromImport": true,
         "IncludeInCommandLine": false,
         "EnumValues": {}
     },
@@ -2379,7 +2469,9 @@
             "public": "Public (default)",
             "ce-1": "ce-1 - PS5 version",
             "legacy-0.5.x": "0.5.x - Initial Early Access version",
-            "legacy-0.6.x": "0.6.x - Gloomrot version"
+            "legacy-0.6.x": "0.6.x - Gloomrot version",
+            "legacy-1.0.x-pc": "1.0.x - Release (1.0) version",
+            "legacy-1.0.x-ce1": "1.0.x - PS5 Release (1.0) version"
         }
     },
     {
@@ -2403,7 +2495,7 @@
         "DisplayName": "BepInEx Version",
         "Category": "Updates",
         "Subcategory": "Runtime Configuration:build:3",
-        "Description": "Sets the [BepInEx version](https://thunderstore.io/c/v-rising/p/BepInEx/BepInExPack_V_Rising/versions/) to install. Blank = latest. NOTE: Update the server after switching versions!",
+        "Description": "Sets the [BepInEx version](https://thunderstore.io/c/v-rising/p/BepInEx/BepInExPack_V_Rising/versions/) to install. Empty = latest. NOTE: Update the server after switching versions!",
         "Keywords": "install,bepinex,version",
         "FieldName": "BepInExVersion",
         "InputType": "text",
