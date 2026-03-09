@@ -1,9 +1,9 @@
 {
-	"id": "ec280171-c67b-4cf8-923f-dc27fea91ee1",
-	"authors": ["CubeCoders Limited", "AMP Community"],
-	"origin": "https://github.com/CubeCoders/AMPTemplates.git",
-	"url": "https://github.com/CubeCoders/AMPTemplates",
+	"id": "8cb54235-4eaa-4fbd-a5f2-aaae7e266afc",
+	"authors": ["Greg Miller", "CubeCoders Limited", "AMP Community"],
+	"origin": "https://github.com/gmillerjr/Amp-Templates.git",
+	"url": "https://github.com/gmillerjr/Amp-Templates",
 	"imagefile": "",
-	"prefix": "",
+	"prefix": "a1gaming",
 	"repotype": "AppTemplates"
 }
